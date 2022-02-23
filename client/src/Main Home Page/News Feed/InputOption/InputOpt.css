@@ -1,0 +1,29 @@
+@import "../../../index.css";
+
+.inputOption {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  color: var(--clr-inputOptC-color);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.inputOption:hover {
+  background-color: var(--clr-inputOptC-bg-onhover);
+  border-radius: 10px;
+}
+
+.inputOption h4 {
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 425px) {
+  .inputOption {
+    flex-direction: column;
+  }
+  .inputOption h4 {
+    margin-left: 0px;
+    font-size: small;
+  }
+}

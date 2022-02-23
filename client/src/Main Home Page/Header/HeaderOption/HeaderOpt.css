@@ -1,0 +1,40 @@
+@import "../../../index.css";
+
+.headerOption {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-right: 20px;
+  color: var(--clr-navright-icons-title);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerOption:hover {
+  color: black;
+}
+
+.headerOption__title {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.headerOption__icon {
+  align-items: center;
+  border: 2px solid var(--clr-avatar-bg);
+}
+
+@media screen and (max-width: 1030px) {
+  .headerOption {
+    margin-right: 0px;
+    flex-direction: row;
+    margin: 10px 0px;
+    justify-content: left;
+    padding-left: 15%;
+  }
+  .headerOption__title {
+    padding-left: 5%;
+  }
+}
+  

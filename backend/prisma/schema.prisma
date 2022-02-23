@@ -1,0 +1,274 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model page_employees {
+  employee_id Int       @id @default(autoincrement())
+  page_id     Int
+  user_id     Int
+  user_page   user_page @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_id_employees")
+  users       users     @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_employees")
+
+  @@index([page_id], map: "page_id_employees_idx")
+  @@index([user_id], map: "user_id_employees_idx")
+}
+
+model page_followers {
+  follower_id Int       @id @default(autoincrement())
+  page_id     Int
+  user_id     Int
+  user_page   user_page @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_id_follower")
+  users       users     @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_follower")
+
+  @@index([page_id], map: "page_id_follower_idx")
+  @@index([user_id], map: "user_id_follower_idx")
+}
+
+model page_jobs {
+  job_id          Int       @id @default(autoincrement())
+  job_name        String    @db.VarChar(45)
+  job_description String    @db.LongText
+  job_type        String    @db.VarChar(45)
+  page_id         Int
+  user_page       user_page @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_id_jobs")
+
+  @@index([page_id], map: "page_id_jobs_idx")
+}
+
+model page_links {
+  link_id  Int    @id @default(autoincrement())
+  link_url String @db.VarChar(45)
+  page_id  Int
+}
+
+model page_post_comments {
+  comment_id          Int        @id @default(autoincrement())
+  comment_description String     @db.LongText
+  post_id             Int
+  page_id             Int
+  user_page           user_page  @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_post_comments_sec")
+  page_posts          page_posts @relation(fields: [post_id], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "post_page_like_sec")
+
+  @@index([page_id], map: "page_post_comments_idx")
+  @@index([post_id], map: "post_comment_link_idx")
+}
+
+model page_post_likes {
+  like_id    Int        @id @default(autoincrement())
+  post_id    Int
+  page_id    Int
+  user_page  user_page  @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_post_likes")
+  page_posts page_posts @relation(fields: [post_id], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "post_id_likes")
+
+  @@index([page_id], map: "page_post_likes_idx")
+  @@index([post_id], map: "post_id_likes_idx")
+}
+
+model page_post_shares {
+  share_id   Int        @id @default(autoincrement())
+  post_id    Int
+  page_id    Int
+  user_page  user_page  @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_post_link_id")
+  page_posts page_posts @relation(fields: [post_id], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "page_post_share_id")
+
+  @@index([page_id], map: "page_post_link_id_idx")
+  @@index([post_id], map: "page_post_share_id_idx")
+}
+
+model page_posts {
+  post_id            Int                  @id @default(autoincrement())
+  post_title         String?              @db.MediumText
+  post_time          DateTime             @db.DateTime(0)
+  post_img           String?              @db.VarChar(45)
+  page_id            Int
+  user_page          user_page            @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_id_post")
+  page_post_comments page_post_comments[]
+  page_post_likes    page_post_likes[]
+  page_post_shares   page_post_shares[]
+
+  @@index([page_id], map: "page_id_post_idx")
+}
+
+model user_education {
+  education_id  Int        @id @default(autoincrement())
+  edu_institute String     @db.VarChar(45)
+  edu_start     DateTime   @db.DateTime(0)
+  edu_end       DateTime   @db.DateTime(0)
+  edu_grade     String     @db.VarChar(5)
+  user_id       Int
+  page_id       Int?
+  user_page     user_page? @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_id")
+  users         users      @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+
+  @@index([page_id], map: "page_id_idx")
+  @@index([user_id], map: "user_id_idx")
+}
+
+model user_friends {
+  friend_id                              Int     @id @default(autoincrement())
+  user_id                                Int
+  friend_email                           String  @db.VarChar(45)
+  friend_status                          Boolean
+  friend_request_status                  String  @db.VarChar(45)
+  users_user_friends_friend_emailTousers users   @relation("user_friends_friend_emailTousers", fields: [friend_email], references: [user_email], onDelete: NoAction, onUpdate: NoAction, map: "user_mail_friend")
+  users_user_friends_user_idTousers      users   @relation("user_friends_user_idTousers", fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_friend")
+
+  @@index([user_id], map: "user_id_friend_idx")
+  @@index([friend_email], map: "user_mail_friend_idx")
+}
+
+model user_hobbies {
+  hobby_id   Int    @id @default(autoincrement())
+  hobby_name String @db.VarChar(45)
+  user_id    Int
+  users      users  @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_hobby")
+
+  @@index([user_id], map: "user_id_hobby_idx")
+}
+
+model user_interests {
+  interest_id   Int    @id @default(autoincrement())
+  interest_name String @db.VarChar(45)
+  user_id       Int
+  users         users  @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_interest")
+
+  @@index([user_id], map: "user_id_interest_idx")
+}
+
+model user_page {
+  page_id            Int                  @id @default(autoincrement())
+  page_name          String               @db.VarChar(45)
+  page_description   String               @db.LongText
+  page_img           String?              @db.VarChar(100)
+  user_id            Int
+  users              users                @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_page")
+  page_employees     page_employees[]
+  page_followers     page_followers[]
+  page_jobs          page_jobs[]
+  page_post_comments page_post_comments[]
+  page_post_likes    page_post_likes[]
+  page_post_shares   page_post_shares[]
+  page_posts         page_posts[]
+  user_education     user_education[]
+  user_work_profile  user_work_profile[]
+
+  @@index([user_id], map: "user_id_page_idx")
+}
+
+model user_post_comments {
+  comment_id          Int        @id @default(autoincrement())
+  comment_description String     @db.LongText
+  post_id             Int
+  user_id             Int
+  user_posts          user_posts @relation(fields: [post_id], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "post_comment_link")
+  users               users      @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_comment_link")
+
+  @@index([post_id], map: "post_comment_link_idx")
+  @@index([user_id], map: "user_comment_link_idx")
+}
+
+model user_post_likes {
+  like_id    Int        @id @default(autoincrement())
+  post_id    Int
+  user_id    Int
+  user_posts user_posts @relation(fields: [post_id], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "post_likes_link")
+  users      users      @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_likes_link")
+
+  @@index([post_id], map: "post_likes_link_idx")
+  @@index([post_id], map: "user_id_likes_idx")
+  @@index([user_id], map: "user_id_likes_idx1")
+  @@index([user_id], map: "user_likes_link_idx")
+}
+
+model user_post_share {
+  share_id   Int        @id @default(autoincrement())
+  post_id    Int
+  user_id    Int
+  user_posts user_posts @relation(fields: [post_id], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "user_link_share_post")
+  users      users      @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_link_user_id")
+
+  @@index([post_id], map: "user_link_share_post_idx")
+  @@index([user_id], map: "user_link_user_id_idx")
+}
+
+model user_posts {
+  post_id            Int                  @id @default(autoincrement())
+  post_title         String?              @db.MediumText
+  post_time          DateTime             @db.DateTime(0)
+  post_img           Int                  @db.TinyInt
+  user_id            Int
+  users              users                @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_post")
+  post_images        post_images[]
+  user_post_comments user_post_comments[]
+  user_post_likes    user_post_likes[]
+  user_post_share    user_post_share[]
+
+  @@index([user_id], map: "user_id_post_idx")
+}
+
+model user_skills {
+  skill_id   Int    @id @default(autoincrement())
+  skill_name String @db.VarChar(45)
+  user_id    Int
+  users      users  @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id_skills")
+
+  @@index([user_id], map: "user_id_idx")
+}
+
+model user_work_profile {
+  profile_id          Int        @id @default(autoincrement())
+  profile_title       String     @db.MediumText
+  profile_description String     @db.LongText
+  profile_start       DateTime   @db.DateTime(0)
+  profile_end         DateTime   @db.DateTime(0)
+  page_id             Int?
+  page_name           String     @db.VarChar(45)
+  profile_type        String     @db.VarChar(45)
+  user_page           user_page? @relation(fields: [page_id], references: [page_id], onDelete: NoAction, onUpdate: NoAction, map: "page_id_company")
+
+  @@index([page_id], map: "page_id_company_idx")
+}
+
+model users {
+  user_id                                       Int                  @id @default(autoincrement())
+  user_name                                     String               @db.VarChar(45)
+  user_contact                                  String?              @db.VarChar(45)
+  user_email                                    String               @unique(map: "user_email_UNIQUE") @db.VarChar(45)
+  user_password                                 String               @db.VarChar(70)
+  user_status                                   Boolean
+  user_page                                     Boolean?
+  user_gender                                   String?              @db.VarChar(10)
+  user_bio                                      String?              @db.MediumText
+  user_city                                     String?              @db.VarChar(45)
+  user_country                                  String?              @db.VarChar(45)
+  user_site                                     String?              @db.VarChar(45)
+  user_img                                      String?              @db.VarChar(150)
+  confirmationCode                              String               @unique(map: "confirmationCode_UNIQUE") @db.VarChar(200)
+  page_employees                                page_employees[]
+  page_followers                                page_followers[]
+  user_education                                user_education[]
+  user_friends_user_friends_friend_emailTousers user_friends[]       @relation("user_friends_friend_emailTousers")
+  user_friends_user_friends_user_idTousers      user_friends[]       @relation("user_friends_user_idTousers")
+  user_hobbies                                  user_hobbies[]
+  user_interests                                user_interests[]
+  user_page_user_pageTousers                    user_page[]
+  user_post_comments                            user_post_comments[]
+  user_post_likes                               user_post_likes[]
+  user_post_share                               user_post_share[]
+  user_posts                                    user_posts[]
+  user_skills                                   user_skills[]
+}
+
+model post_images {
+  postImg_id         Int        @id @default(autoincrement())
+  postImg_imgAddress String     @db.VarChar(150)
+  postImg_postId     Int
+  user_posts         user_posts @relation(fields: [postImg_postId], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "postImg_post_link")
+
+  @@index([postImg_postId], map: "postImg_post_link_idx")
+}

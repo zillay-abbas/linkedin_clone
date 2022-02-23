@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Sign up Form
+    </title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+        integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="mainbody">
+    <div class="container">
+        <h1 class="registration-form">
+            Sign up Here
+        </h1>
+
+    </div>
+
+    <script>
+        var socket = io("http://localhost:3308");
+        // socket.on('connect', function() {
+        //     console.log('connected');
+        // });
+    </script>
+</body>
+
+</html>

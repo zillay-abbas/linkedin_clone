@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@200;300&display=swap");
+
+.feed {
+  /* position: sticky;
+  top: 90px; */
+  flex: 0.6;
+  height: fit-content;
+  margin: 0px 20px;
+  font-family: "Poppins";
+}
+
+.feed__inputContainer {
+  background-color: var(--clr-feed-inputContainerdiv-bg);
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.feed__input {
+  border: 1px solid var(--clr-feed-inputdiv-border);
+  border-radius: 30px;
+  display: flex;
+  padding: 10px;
+  color: var(--clr-feed-inputdiv-color);
+  padding-left: 15px;
+}
+
+.feed__input form {
+  display: flex;
+  width: 100%;
+}
+
+.feed__input > form > input {
+  border: none;
+  flex: 1;
+  margin-left: 10px;
+  outline-width: 0px;
+  font-weight: 600;
+}
+
+.feed__input > form > button {
+  display: none;
+}
+
+.feed__inputOptions {
+  display: flex;
+  justify-content: space-evenly;
+}

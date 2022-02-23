@@ -1,0 +1,29 @@
+@import "../../../index.css";
+
+.network__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.network__left__side {
+    width: 30%;
+    border-radius: 15px;
+    border: 1px solid var(--clr-sidebartop-border);
+    background-color: white;
+}
+
+.normal__heading {
+    font-size: 1rem;
+    font-style: none;
+    font-weight: 400;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 16px;
+    margin-right: 16px;
+    color: var(--clr-recents-text-lefttopbarbottom-color-onhover);
+}
+
+.network__right__side {
+    width: 60%;
+}

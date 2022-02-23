@@ -1,0 +1,92 @@
+:root {
+  /* Sign In (The users which have account on our software) page all colors.*/
+  --clr-body-bg: #1abc9c; /*Whole body background color*/
+  --clr-wcontent-center: #fff; /*Backgroundcolor of the content on center*/
+  --clr-signin-bg: #16a085; /*Backgroundcolor of the Sign In*/
+  --clr-signin-c: #fff; /*color of the Sign In*/
+  --clr-icon-color: #fff; /*color of the Icons*/
+  --clr-icon-bg: #16a085; /*Backgroundcolor of the Icons*/
+  --clr-icon-border: #16a085; /*bordercolor of the Icons*/
+  --clr-loginbtn-bg: #16a085; /*Backgroundcolor of the Login button*/
+  --clr-loginbtn-border: #16a085; /*bordercolor of Login button*/
+  --clr-loginbtn-color: #fff; /*color of Login button*/
+  --clr-forgot-color: #16a085; /*color of forgot link*/
+  --clr-joinnow-color: #16a085; /*color of join now link*/
+  --clr-loginhover-bg: #12876f; /*Backgroundcolor of Login button on hover*/
+  --clr-inputs-border-color: #16a085; /*bordercolors of input fields */
+}
+
+:root {
+  /* Sign Up (The users which donot have any account on our software so they are supposed to sign up) page all colors.*/
+  --clr-body-bg: #1abc9c; /*Whole body background color*/
+  --clr-wcontent-center: #fff; /*Backgroundcolor of the content on center*/
+  --clr-signup-bg: #16a085; /*Backgroundcolor of the Sign Up*/
+  --clr-signup-c: #fff; /*color of the Sign Up*/
+  --clr-icon-color: #fff; /*color of the Icons*/
+  --clr-icon-bg: #16a085; /*Backgroundcolor of the Icons*/
+  --clr-icon-border: #16a085; /*bordercolor of the Icons*/
+  --clr-AgreeJoinbtn-bg: #16a085; /*Backgroundcolor of the Agree & join button*/
+  --clr-AgreeJoinbtn-border: #16a085; /*bordercolor of Agree & join button*/
+  --clr-AgreeJoinbtn-color: #fff; /*color of Agree & join button*/
+  --clr-agreeterms-color: #16a085; /*color of agreeterm links*/
+  --clr-joinnow-color: #16a085; /*color of sign in link*/
+  --clr-AgreeJoinhover-bg: #12876f; /*Backgroundcolor of Agree & join button on hover*/
+  --clr-inputs-border-color: #16a085; /*bordercolors of input fields */
+}
+
+:root {
+  /* For Main Page having header, left bar, feed and right bar*/
+
+  /* Header Component */
+  --clr-W-main-bg: #f3f2ef; /* The background color of the main page where header, leftbar, feed, rightbar are displayed. */
+  --clr-input-searchdiv: gray; /*Color of the div(header__search) in which icon and search bar are placed*/
+  --clr-input-searchdiv-bg: #eef3f8; /*Backgroundcolor of the div(header__search) in which icon and search bar are placed*/
+  --clr-navright-icons-title: gray; /* Color of the headerOption div in which we are dynamically passing icon and title (right side of nav bar icons and title)*/
+  --clr-header-border-bottom: lightgray; /* border from bottom of the header of the main home page*/
+  --clr-avatar-bg: green; /* The avatar on the top right corner in which the profile of the logined user will be displayed.*/
+
+  /* left Sidebar component */
+  --clr-sidebartop-border: lightgray; /* As we know that we have divided our leftsidebar to two parts so its the border of the upper leftsidebar */
+  --clr-sidebartop-bg: white; /* As we know that we have divided our leftsidebar to two parts so its the backgroundcolor of the upper leftsidebar */
+  --clr-stats-top-sidebar-color: gray; /* The color of stats which are under the leftside top bar */
+  --clr-statNumber-color: #0a66c2; /* The stat numbers of the stats on the top left side bar */
+  --clr-sidebar-stats-border: gray; /* border color of the (sidebar__stats) div on the left sidebar top */
+  --clr-sidebartop-email: gray; /* The email which can be seen on the top leftsidebar */
+  --clr-sidebarbottom-border: lightgray; /* The border color of the left side bar bottom */
+  --clr-recents-text-lefttopbarbottom-color: gray; /*color of the text on the top bar bottom, the text below recent*/
+  --clr-recents-text-lefttopbarbottom-bg-onhover: whitesmoke; /* background color of the text below the recent on hover */
+  --clr-recents-text-lefttopbarbottom-color-onhover: black; /* color of the text below the recent on hover */
+
+  /* Feed Component */
+  --clr-feed-inputContainerdiv-bg: white; /* the top input container in the feed section. */
+  --clr-feed-inputdiv-border: lightgray; /* The border color of feedinput div in feed section in which we are placing all our elements of top i.e icon search bar, button etc. */
+  --clr-feed-inputdiv-color: gray; /* The color of feedinput div in feed section in which we are placing all our elements of top i.e icon search bar, button etc. */
+  --clr-inputOptC-color: gray; /* The color of the inputOptions div in InputOpt component in which we are dynamically passing title, icon and color using props. */
+  --clr-inputOptC-bg-onhover: whitesmoke;
+  /* Post component */
+  --clr-mainPostContainerinfeed-bg: white; /* Background color of the second container of feed in which our posts will be dislpayed.  */
+  --clr-description-in-postcomponent-color: gray; /* Color of the p tag (description) of feed in which our posts will be dislpayed. */
+
+  /* Rightsidebar(Widgets) */
+  --clr-widgetsdiv-main-bg: white; /* backgrouncolor of the rightsidebar (widgets component)  */
+  --clr-widgetsdiv-main-border: lightgray; /* border of the rightsidebar (widgets component)  */
+  --clr-widgetsarticle-hover-bg: whitesmoke; /* Background on hover of the whole article including heading and subtitle */
+  --clr-widget-subtitledynamic-color: gray; /* Color of subtitle below the headings in the rightsidebar (widgets)   */
+  --clr-dot-rightsidebar-left-color: #0177b7; /* color of the dot icon that we can see in the rightsidebar(widget) */
+
+  /* Profile Component */
+  --clr-mainbody-color: whitesmoke; /* color of main body of profile component */
+  --clr-personalinfo__button-bg: white; /* backgroundcolor of first personal info and  button div of profile component */
+  --clr-suggestedforyoudiv-bg: white; /* backgroundcolor of secon suggested for you div of profile component */
+  --clr-profilepersonalinfobutton-color: white; /* color of button component of profile component */
+  --clr-profilepersonalinfobutton-bg: blue; /* backgroundcolor of button component of profile component */
+  --clr-profilepersonalinfobutton-border: lightgray; /* border of button component of profile component */
+  --clr-Suggested__foryou-bg: white; /* Background color of suggested for you text area in profile component. */
+  --clr-Analytics-bg: white; /* Background color of Analytics text area in profile component. */
+  --clr-resources-bg: white; /* Background color of resources text area in profile component. */
+  --clr-about-bg: white; /* Background color of about text area in profile component. */
+  --clr-activity-bg: white; /* Background color of activity text area in profile component. */
+  --clr-education-bg: white; /* Background color of education text area in profile component. */
+
+  --clr-footer-bg: whitesmoke; /* Background color of footer in profile component. */
+}
