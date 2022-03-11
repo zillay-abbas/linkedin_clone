@@ -1,0 +1,62 @@
+
+.b_project_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+}
+
+.b_proj_head {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.b_proj_privacy {
+    display: flex;
+    align-items: center;
+}
+
+.b_mx_1 {
+    margin: 0 5px;
+}
+
+.b_slider_view {
+    display: flex;
+    height: 12rem;
+    width: 50rem;
+    overflow-x: scroll;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.b_slide_arrow {
+    display: flex;
+    align-items: center;
+    position: static;
+}
+
+.b_scroll_cont {
+    display: flex;
+    border: 1px solid black;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.b_slide_right {
+    position: sticky;
+    right: 0;
+    top: 50%;
+    background: white;
+}
+
+.b_slide_left {
+    position: sticky;
+    left: 0;
+    top: 50%;
+    background: white;
+}

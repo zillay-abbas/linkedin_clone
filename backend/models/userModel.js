@@ -14,6 +14,36 @@ class User {
     });
   }
 
+  static async checkMail(mail) {
+    return await prisma.users.findUnique({
+      where: {
+        user_email: mail
+      },
+    });
+  }
+
+  static async updateMail(id, mail){
+    return await prisma.users.update({
+      where: {
+        user_id: id,
+      },
+      data : {
+        user_email: mail,
+      }
+    });
+  }
+
+  static async updateToken(id, token){
+    return await prisma.users.update({
+      where : {
+        user_id: id,
+      },
+      data: {
+        confirmationCode: token,
+      }
+    })
+  }
+
   static async deletePostImg(postId){
     return await prisma.post_images.deleteMany({
       where: {

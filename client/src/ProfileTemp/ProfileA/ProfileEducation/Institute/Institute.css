@@ -1,0 +1,10 @@
+.institute_cont {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.institute_name {
+    font-weight: bold;
+    font-size: medium;
+}

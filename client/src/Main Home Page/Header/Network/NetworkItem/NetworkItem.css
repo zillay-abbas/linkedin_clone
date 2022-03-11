@@ -1,0 +1,17 @@
+.network__item {
+  display: flex;
+  flex-direction: row;
+  padding: 8px 20px;
+  color: var(--black-normaltext-a60);
+}
+
+.network__icon {
+  margin-right: 16px;
+}
+
+.item__text {
+}
+
+.item__count {
+  margin-left: auto;
+}

@@ -1,6 +1,6 @@
 @import "../index.css";
 
-.app {
+.main-app {
   background-color: var(--clr-W-main-bg);
   display: flex;
   flex-direction: column;

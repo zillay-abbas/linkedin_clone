@@ -1,0 +1,77 @@
+.right__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 5px 15px;
+}
+
+.pro_back {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.pro__opt {
+  display: flex;
+  width: 3rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message__det {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.bottom__msg {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  border-top: 1px solid lightgray;
+}
+
+.inp__bar {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+.inpt {
+  width: 95%;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  border: none;
+  color: rgba(0, 0, 0, 0.3);
+  height: 25px;
+  padding-left: 10px;
+}
+
+.send__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+
+.send {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  border: none;
+  color: rgba(0, 0, 0, 0.3);
+  width: 80%;
+  height: 25px;
+}
+
+@media screen and (max-width: 920px) {
+  .right__top {
+    padding: 3px 10px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .pro_back {
+    display: flex;
+  }
+}
+

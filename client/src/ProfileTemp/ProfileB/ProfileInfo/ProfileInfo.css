@@ -1,0 +1,104 @@
+.profile_b_info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.img_background_b {
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  /* clip-path: polygon(0 0, 100% 0, 100% 98%, 0 77%); */
+}
+
+.img_profile_b {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: -6rem;
+  z-index: 100;
+  box-shadow: 0 2px 5px 1px rgb(69 90 100 / 90%);
+}
+
+.profile_b_main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profile_det_b {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  color: white;
+  margin: 0 10px;
+}
+
+.profile_img_rat_b {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+
+.profile_name_b {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.prof_desc_b {
+  font-size: small;
+  font-weight: bold;
+}
+
+.prof_loc_b {
+  font-size: x-small;
+  font-weight: bold;
+}
+
+.contact_link_b {
+  text-decoration: none;
+  color: #2a6b92;
+}
+
+.p_left_b {
+  padding-left: 5px;
+  color: white;
+}
+
+.prof_conn_b {
+  color: #41ECEA;
+  font-weight: bolder;
+  font-size: x-small;
+  margin-left: 25px;
+}
+
+.pro_rating_b {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.star_color_b {
+  color: #f45c24;
+}
+.pro_desc_b {
+  display: flex;
+}
+
+.icon_desc_b {
+  margin: 0 5px;
+}
+
+.follow_btn {
+  display: flex;
+  background-color: white;
+  color: #333333;
+  width: 5rem;
+  height: 1.5rem;
+  border-radius: 10px;
+  justify-content: center;
+  font-weight: bold;
+}

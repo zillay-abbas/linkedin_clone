@@ -1,0 +1,41 @@
+@import "../../../index.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@200;300&display=swap");
+
+.message__data {
+  display: flex;
+  margin-top: 20px;
+}
+
+.message__data .messagedata__left {
+  flex: 0.1;
+  width: 50px;
+}
+
+.messagedata__left img {
+  width: 50px;
+  padding-left: 10px;
+}
+
+.message__data .messagedata__middle {
+  flex: 0.8;
+  margin-left: 10px;
+}
+
+.messagedata__middle p {
+  font-size: 13px;
+}
+
+.messagedata__middle img {
+  width: 35px;
+}
+
+.messagedata__right {
+  padding-left: 90px;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 400px) {
+  .messagedata__middle img {
+    width: 25px;
+  }
+}

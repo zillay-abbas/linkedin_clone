@@ -1,0 +1,18 @@
+
+.stat_cont {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.btn_basic {
+    display: flex;
+    height: 30px;
+    width: fit-content;
+    align-items: center;
+    background-color: #D6ACB0;
+    color: white;
+    padding: 0 10px;
+    margin: 0 5px;
+    border-radius: 10px;
+}

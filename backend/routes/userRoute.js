@@ -24,6 +24,8 @@ router.route("/register").post(registerUser);
 //Login handle
 router.route("/login").post(checkUser);
 
+router.route("/update/email").post(updateEmail);
+
 router.route("/loginWithGoogle").get(passport.authenticate('google', {scope: ['profile', 'email']}));
 
 router.route("/loginGoogle/check").get(passport.authenticate('google', {failureRedirect: '/v1/user/fail'}), function(req, res) { res.redirect('/v1/user/home')});

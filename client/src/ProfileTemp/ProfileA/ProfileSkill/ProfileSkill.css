@@ -1,0 +1,36 @@
+
+.a_stat_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-shadow: 0 2px 5px 1px rgb(69 90 100 / 30%);
+    margin: 20px 20px;
+    border-radius: 5px;
+}
+
+.a_skill_head {
+    display: flex;
+    justify-content: center;
+    color: #333333;
+    padding: 10px 0;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.a_skill_sub {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px 3rem;
+    justify-content: space-around;
+}
+
+.a_skill_round {
+    background-color: #333333;
+    color: white;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 5px 15px;
+    height: fit-content;
+}

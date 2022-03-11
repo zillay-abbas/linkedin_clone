@@ -1,0 +1,18 @@
+
+.edu_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px 1px rgb(69 90 100 / 30%);
+    margin: 20px 20px;
+    border-radius: 5px;
+}
+
+.edu_head {
+    margin: 10px 0;
+}
+
+.edu_det {
+    padding: 20px;
+    width: 100%;
+}

@@ -1,0 +1,164 @@
+
+.msg-cont {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.messaging {
+  display: flex;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  margin: 25px 0px;
+  width: 60rem;
+}
+
+.leftside{
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  height: 100%;
+  overflow: hidden;
+  border-right: 1px solid lightgray;
+}
+
+.left__top {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid lightgray;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.rig__icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 3rem;
+}
+
+.left__bottom {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.search__bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  border-bottom: 1px solid lightgray;
+}
+
+.search__inp {
+  background: #EEF3F8;
+  width: 90%;
+  height: 25px;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+}
+
+.search__inp:focus {
+  outline: none;
+  border: 2px solid gray !important;
+}
+
+.chat__list {
+  height: 100%;
+  overflow-y: auto; 
+  padding-bottom: 40px;
+}
+
+.rightside {
+  display: flex;
+  flex-direction: column;
+  width: 73%;
+}
+
+.right__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 5px 15px;
+}
+
+
+@media screen and (max-width: 920px) {
+  .messaging {
+    width: 40rem;
+  }
+  .leftside {
+    width: 40%;
+  }
+  .rightside {
+    width: 60%;
+  }
+  .search__inp {
+    height: 20px;
+  }
+  .left__top{
+    padding: 3px 10px;
+  }
+  .right__top {
+    padding: 3px 10px;
+  }
+  .flex-grow-1 {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .messaging {
+    width: 25rem;
+  }
+  .rightside_hide {
+    width: 0;
+    overflow: hidden;
+  }
+  .leftside_hide {
+    width: 0%;
+    overflow: hidden;
+  }
+  .leftside {
+    width: 100%;
+  }
+  .rightside {
+   display: none;
+  }
+  .pro_back {
+    display: flex;
+  }
+  
+
+  .leftside__none {
+    display: none !important;
+  }
+  .rightside__none {
+    display: flex !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .messaging {
+    width: 25rem;
+    border-radius: 0%;
+  }
+  .rightside {
+    display: none;
+  }
+  .leftside {
+    width: 100%;
+  }
+
+  .leftside__none {
+    display: none;
+  }
+  .rightside__none {
+    display: block;
+    width: 100%;
+  }
+}

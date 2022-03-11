@@ -1,0 +1,18 @@
+.a_about {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 45px;
+}
+
+.a_about_head {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+.a_about_des {
+    text-align: center;
+    padding: 10px 0;
+}

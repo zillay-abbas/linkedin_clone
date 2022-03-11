@@ -1,0 +1,17 @@
+
+.b_edu_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.b_edu_head {
+    margin: 10px 0;
+}
+
+.b_edu_det {
+    padding: 20px;
+    width: 100%;
+}

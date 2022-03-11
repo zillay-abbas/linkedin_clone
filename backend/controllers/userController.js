@@ -10,6 +10,51 @@ const { User } = require("../models/userModel");
 var schema = new passwordValidator();
 schema.is().min(4);
 
+exports.updateEmail = async (req, res) => {
+  const { id, name, oldMail, newMail } = req.body;
+  if (!oldMail || !newMail) {
+    res.status(500).json({
+      error: true,
+      msg: "Incorrect input",
+    });
+  } else {
+    try {
+      const isExists = await User.checkMail(oldMail);
+      if (!isExists) {
+        res.status(500).json({
+          error: true,
+          msg: "Account with this email not exists",
+        });
+      } else {
+        const isUpdated = await User.updateMail(id, newMail);
+        if (isUpdated) {
+          const token = jwt.sign({ email: email }, secret);
+
+          const updateToken = await User.updateToken(id, token);
+          
+          const mailVerification = await sendMail(
+            name,
+            newMail,
+            "Account Verification",
+            "Click button to verify mail",
+            token
+          );
+
+          res.status(200).json({
+            error: false,
+            msg: "Email sent",
+          });
+        }
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: true,
+        msg: "Server error",
+      });
+    }
+  }
+};
+
 exports.returnHome = async (req, res) => {
   res.status(200).json({
     error: false,
@@ -253,6 +298,7 @@ exports.checkUser = async (req, res) => {
           error: false,
           msg: "Login Successfuly",
           token: token,
+          user: foundAdmin,
         });
       } else {
         res.status(401).json({
@@ -355,5 +401,5 @@ exports.getUserDetails = async (req, res) => {
 exports.logoutUser = async (req, res) => {
   req.session = null;
   req.logout();
-  res.redirect('/');
+  res.redirect("/");
 };

@@ -17,7 +17,7 @@ function Main() {
 
   return (
     <>
-      <div className="app">
+      <div className="main-app">
         {/* <CloneHead /> */}
         <Header click={() => setSideToggle(true)}/>
         

@@ -89,4 +89,10 @@
   --clr-education-bg: white; /* Background color of education text area in profile component. */
 
   --clr-footer-bg: whitesmoke; /* Background color of footer in profile component. */
+
+  --black-normaltext-a60: rgba(0,0,0,0.6);
+  --hover-transparent-white: #EBEBEB;
+  --user-name: rgba(0,0,0,0.9);
+  --profile-desc: #666666;
+  --connect-btn: #2275C8;
 }

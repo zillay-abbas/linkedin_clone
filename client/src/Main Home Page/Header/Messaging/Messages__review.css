@@ -1,0 +1,45 @@
+
+.message__r {
+  display: flex;
+  padding: 5px 10px;
+}
+
+.top-cont:hover {
+  background-color: #EBEBEB;
+} 
+
+.msg-img {
+  border-radius: 50%;
+}
+
+.messager__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messager__left img {
+  width: 50px;
+}
+
+.messager__middle {
+  margin-left: 10px;
+}
+
+.pro-chat-det {
+  display: flex;
+  font-size: 14px;
+}
+
+.pro-name {
+  font-size: 16px !important;
+  font-style: normal !important;
+}
+
+.end-line {
+  height: .5px;
+  width: 90%;
+  background-color: lightgray;
+  position: relative;
+  margin-left: 10%;
+}

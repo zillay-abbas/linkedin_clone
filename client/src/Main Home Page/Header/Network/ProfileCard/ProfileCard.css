@@ -1,0 +1,111 @@
+.card__container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  border: 1px solid var(--hover-transparent-white);
+  width: 11rem;
+  align-items: center;
+  position: relative;
+
+}
+
+.profile__background {
+  position: relative;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  background-size: cover;
+  height: 62px;
+  width: 100%;
+}
+
+.profile__image {
+  margin-top: 15px;
+  position: absolute;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--profile-background);
+}
+
+.close__mark {
+  position: absolute;
+  background-color: rgba(0,0,0,.5);
+
+  right: 10px;
+  top: 7px;
+
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  
+  z-index: 100;
+
+  text-align: center;
+}
+
+.close__ico {
+  color: whitesmoke;
+  font-size: 1.2rem;
+  margin-top: 2px;
+  margin-left: 1px;
+}
+
+.below__img {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  margin-top: 30px;
+}
+
+.profile__name {
+  line-height: 1rem;
+  max-height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  color: var(--user-name);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.profile__designation {
+  color: var(--profile-desc);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.mutual__conn {
+  color: var(--profile-desc);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 12px 0 12px 0;
+}
+
+.connect__btn {
+  border-radius: 1.6rem;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  text-align: center;
+  color: var(--connect-btn);
+  font-weight: bold;
+  border: 1px solid var(--connect-btn);
+}
+
+@media screen and (max-width: 745px) {
+  .card__container {
+    width: 11rem;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .card__container {
+    width: 12.5rem;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .card__container {
+    width: 100%;
+  }
+}

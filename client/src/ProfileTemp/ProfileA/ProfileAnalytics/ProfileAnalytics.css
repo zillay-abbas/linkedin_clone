@@ -1,0 +1,28 @@
+
+.analytics_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px 1px rgb(69 90 100 / 30%);
+    margin: 20px 20px;
+    border-radius: 5px;
+}
+
+.ana_det {
+    display: flex;
+}
+
+.ana_sub {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ana_icon {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.first_line {
+    display: flex;
+}
