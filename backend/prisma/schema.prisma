@@ -249,6 +249,10 @@ model users {
   user_site                                     String?              @db.VarChar(45)
   user_img                                      String?              @db.VarChar(150)
   confirmationCode                              String               @unique(map: "confirmationCode_UNIQUE") @db.VarChar(200)
+  user_theme                                    Int
+  user_theme_color                              Int
+  theme_style                                   theme_style          @relation(fields: [user_theme], references: [theme_id], onDelete: NoAction, onUpdate: NoAction, map: "user_theme")
+  theme_color                                   theme_color          @relation(fields: [user_theme_color], references: [color_id], onDelete: NoAction, onUpdate: NoAction, map: "user_theme_color")
   page_employees                                page_employees[]
   page_followers                                page_followers[]
   user_education                                user_education[]
@@ -262,6 +266,9 @@ model users {
   user_post_share                               user_post_share[]
   user_posts                                    user_posts[]
   user_skills                                   user_skills[]
+
+  @@index([user_theme_color], map: "user_theme_color_idx")
+  @@index([user_theme], map: "user_theme_idx")
 }
 
 model post_images {
@@ -271,4 +278,24 @@ model post_images {
   user_posts         user_posts @relation(fields: [postImg_postId], references: [post_id], onDelete: NoAction, onUpdate: NoAction, map: "postImg_post_link")
 
   @@index([postImg_postId], map: "postImg_post_link_idx")
+}
+
+model theme_color {
+  color_id      Int           @id @default(autoincrement())
+  color_bg      String        @unique(map: "color_name_UNIQUE") @db.VarChar(45)
+  color_primary String        @unique(map: "color_value_UNIQUE") @db.VarChar(45)
+  color_head    String        @db.VarChar(45)
+  color_normal  String        @db.VarChar(45)
+  theme_style   theme_style[]
+  users         users[]
+}
+
+model theme_style {
+  theme_id                             Int         @id @default(autoincrement())
+  theme_name                           String      @unique(map: "theme_name_UNIQUE") @db.VarChar(45)
+  theme_color                          Int
+  theme_color_theme_colorTotheme_style theme_color @relation(fields: [theme_color], references: [color_id], onDelete: NoAction, onUpdate: NoAction, map: "theme_wth_color")
+  users                                users[]
+
+  @@index([theme_color], map: "theme_wth_color_idx")
 }

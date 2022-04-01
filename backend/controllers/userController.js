@@ -10,6 +10,133 @@ const { User } = require("../models/userModel");
 var schema = new passwordValidator();
 schema.is().min(4);
 
+exports.loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  // Validation checking
+  if (!email || !password) {
+    res.status(400).json({
+      error: true,
+      msg: "Please fill in all fields",
+    });
+  } else {
+    //validation passed
+
+    try {
+      let user = await User.getUserbyEmail(email);
+      if (user) {
+        let storedPass = user.user_password;
+
+        const passwordMatch = await bcrypt.compare(password, storedPass);
+
+        if (passwordMatch) {
+          let payload = { id: user.user_id };
+          let token = jwt.sign(payload, "secret");
+
+          res.status(201).json({
+            error: false,
+            msg: "Login Successfuly",
+            token: token,
+            user: user,
+          });
+        } else {
+          res.status(401).json({
+            error: true,
+            msg: "Invalid Password",
+          });
+        }
+      } else {
+        res.status(400).json({
+          error: true,
+          msg: "User Not Found",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: true,
+        msg: "Server error",
+      });
+    }
+  }
+};
+
+exports.registerUser = async (req, res) => {
+  // Get form request
+  const { name, email, password } = req.body;
+
+  // Validation checking
+  if (!name || !email || !password) {
+    res.status(400).json({
+      error: true,
+      msg: "Input not correct",
+    });
+  } else {
+    try {
+      if (validator.validate(email) && schema.validate(password)) {
+        let hashPassword = await bcrypt.hash(password, 10);
+
+        const user = await User.getUserbyEmail(email);
+
+        if (user) {
+          res.status(400).json({
+            error: true,
+            msg: "User with this email already exists",
+          });
+        } else {
+          // Add user with stored porcedure
+          const secret = "secret";
+          const status = false;
+          const theme = 1;
+          const color = 1;
+
+          const token = jwt.sign({ email: email }, secret);
+
+          const mailVerification = await sendMail(
+            name,
+            email,
+            "Account Verification",
+            "Click button to verify mail",
+            token
+          );
+          if (mailVerification.rejected.length == 0) {
+            const addUser = User.insertUser(
+              name,
+              email,
+              hashPassword,
+              status,
+              token,
+              theme,
+              color,
+            );
+
+            res.status(200).json({
+              error: false,
+              msg: "Account Created",
+              status,
+            });
+          } else {
+            res.status(500).json({
+              error: true,
+              msg: "Server error",
+            });
+          }
+        }
+      } else {
+        res.status(422).json({
+          error: true,
+          msg: "Please enter valid details",
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: true,
+        msg: "Server Error",
+      });
+    }
+  }
+};
+
 exports.updateEmail = async (req, res) => {
   const { id, name, oldMail, newMail } = req.body;
   if (!oldMail || !newMail) {
@@ -31,7 +158,7 @@ exports.updateEmail = async (req, res) => {
           const token = jwt.sign({ email: email }, secret);
 
           const updateToken = await User.updateToken(id, token);
-          
+
           const mailVerification = await sendMail(
             name,
             newMail,
@@ -60,89 +187,6 @@ exports.returnHome = async (req, res) => {
     error: false,
     msg: "Home Page",
   });
-};
-
-exports.inFail = async (req, res) => {
-  res.status(400).json({
-    error: true,
-    msg: "Login Failed",
-  });
-};
-
-exports.registerUser = async (req, res) => {
-  // Get form request
-  const { name, email, password } = req.body;
-
-  // Validation checking
-  if (!name || !email || !password) {
-    res.status(400).json({
-      error: true,
-      msg: "Input not correct",
-    });
-  } else {
-    try {
-      if (validator.validate(email) && schema.validate(password)) {
-        let hashPassword = await bcrypt.hash(password, 10);
-
-        console.log(`email: ${email}`);
-
-        const user = await User.getUserbyEmail(email).catch((error) =>
-          res.status(500).json({
-            error: true,
-            msg: "Server Error",
-          })
-        );
-        console.log(user);
-        if (user) {
-          res.status(400).json({
-            error: true,
-            msg: "User with this email already exists",
-          });
-        } else {
-          // Add user with stored porcedure
-          const secret = "secret";
-          const status = false;
-
-          const token = jwt.sign({ email: email }, secret);
-
-          const mailVerification = await sendMail(
-            name,
-            email,
-            "Account Verification",
-            "Click button to verify mail",
-            token
-          );
-
-          console.log(`mail data: ${mailVerification}`);
-          console.log(`mail add: ${token}`);
-
-          const addUser = User.insertUser(
-            name,
-            email,
-            hashPassword,
-            status,
-            token
-          );
-
-          res.status(200).json({
-            error: false,
-            msg: "Account Created",
-            user: addUser,
-          });
-        }
-      } else {
-        res.status(422).json({
-          error: true,
-          msg: "Please enter valid details",
-        });
-      }
-    } catch (error) {
-      res.status(500).json({
-        error: true,
-        msg: "Server Error",
-      });
-    }
-  }
 };
 
 exports.updateUser = async (req, res) => {
@@ -270,52 +314,7 @@ exports.getUserImage = async (req, res) => {
   res.download("public/uploads/profilePic/" + req.params.imgPath);
 };
 
-exports.checkUser = async (req, res) => {
-  const { email, password } = req.body;
-
-  // Validation checking
-  if (!email || !password) {
-    res.status(401).json({
-      error: true,
-      msg: "Please fill in all fields",
-    });
-  } else {
-    //validation passed
-    let foundAdmin = await User.getUserbyEmail(email).catch((error) =>
-      res.status(500).json({ msg: "Server Error" })
-    );
-
-    if (foundAdmin) {
-      let storedPass = foundAdmin.user_password;
-
-      const passwordMatch = await bcrypt.compare(password, storedPass);
-
-      if (passwordMatch) {
-        let payload = { id: foundAdmin.user_id };
-        let token = jwt.sign(payload, "secret");
-
-        res.status(201).json({
-          error: false,
-          msg: "Login Successfuly",
-          token: token,
-          user: foundAdmin,
-        });
-      } else {
-        res.status(401).json({
-          error: true,
-          msg: "Invalid Password",
-        });
-      }
-    } else {
-      res.status(401).json({
-        error: true,
-        msg: "User Not Found",
-      });
-    }
-  }
-};
-
-exports.confirmUser = async (req, res) => {
+exports.verifyUser = async (req, res) => {
   const token = req.params.code;
 
   console.log(`token: ${token}`);

@@ -23,9 +23,4 @@ app.use(express.urlencoded({ extended: false}));
 
 app.use("/v1/user", userRoute);
 
-// app.use("/", function(req, res){
-//   res.send('connect');
-// });
-
-
 module.exports = app;

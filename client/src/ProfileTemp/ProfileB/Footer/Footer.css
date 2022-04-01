@@ -1,0 +1,19 @@
+.b_footer_cont {
+    height: 10rem;
+    color: #333333;
+    margin: 20px 20px 0 20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: #191919;
+    padding: 25px;
+    color: white;
+    box-shadow: 0 2px 5px 1px rgb(69 90 100 / 30%);
+}
+
+.b_about_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    font-weight: bold;
+}

@@ -1,0 +1,78 @@
+.contain {
+  width: 100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.contain .edit {
+  position: absolute;
+  top: 100px;
+  left: 1000px;
+  border: none;
+  background: none;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 99999;
+}
+
+.contain .theme_sidebar {
+  position: absolute;
+  left: 1000px;
+  height: 100vh;
+  width: 30vw;
+  background-color: #042331;
+  border: 1px solid gray;
+  z-index: 99999;
+  /* padding: 20px; */
+  color: white;
+}
+
+.templates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.templates img {
+  width: 80px;
+  height: 80px;
+  /* margin-left: 20px; */
+  margin-top: 30px;
+}
+
+.theme_sidebar a {
+  cursor: pointer;
+  color: white;
+}
+
+.theme_sidebar .text {
+  margin-top: 10px;
+  color: white;
+}
+
+.color_picker {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.color_picker button {
+  background: none;
+  border: 1px solid white;
+  border-radius: 15px;
+  color: white;
+  padding: 4px 6px 4px 6px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.color_wrap {
+  margin-top: 20px;
+}

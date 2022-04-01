@@ -6,15 +6,15 @@ import ProfileStatCard from "./ProfileStatCard/ProfileStatCard";
 import ProjectDetail from "./ProjectDetail/ProjectDetail";
 import ProfileEdu from "./ProfileEducation/ProfileEdu";
 import ProfileSkill from "./ProfileSkill/ProfileSkill";
-import ProfileAbout from './ProfileAbout/ProfileAbout';
+import ProfileAbout from "./ProfileAbout/ProfileAbout";
 
 import "./Profile.css";
 import ProfileAnalytics from "./ProfileAnalytics/ProfileAnalytics";
 
-const Profile = () => {
+const Profile = ({ bgcolor }) => {
   return (
     <div className="profile_cont">
-      <div className="profile">
+      <div className="profile" style={{ backgroundColor: bgcolor }}>
         {/* profile info */}
         <ProfileInfo />
 

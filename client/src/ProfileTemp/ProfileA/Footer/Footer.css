@@ -1,0 +1,22 @@
+.footer_cont {
+    height: 10rem;
+    color: #333333;
+    margin: 20px 20px 0 20px;
+    border-top : 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 25px;
+    background-color: #333333;
+    color: white;
+    box-shadow: 0 2px 5px 1px rgb(69 90 100 / 30%);
+}
+
+.about_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    font-weight: bold;
+}

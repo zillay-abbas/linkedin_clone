@@ -22,7 +22,7 @@
 .profile_info_ana {
   display: flex;
   flex-direction: column;
-  background-color: #333333;
+  /* background-color: #333333; */
   width: 100%;
 }
 

@@ -204,14 +204,18 @@ class User {
     });
   }
 
-  static insertUser(name, email, password, status, token) {
-    return db.execute("CALL create_user(?, ?, ?, ?, ?)", [
-      name,
-      email,
-      password,
-      status,
-      token,
-    ]);
+  static async insertUser(name, email, password, status, token, theme, color) {
+    return await prisma.users.create({
+      data: {
+        user_name: name,
+        user_email: email,
+        user_password: password,
+        user_status: status,
+        confirmationCode: token,
+        user_theme: theme,
+        user_theme_color: color,
+      }
+    })
   }
 
   static updateUserVerification(id, status) {

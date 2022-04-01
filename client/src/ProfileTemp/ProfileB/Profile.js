@@ -9,10 +9,10 @@ import ProfileEdu from "./ProfileEducation/ProfileEdu";
 import "./Profile.css";
 import ProfileAnalytics from "./ProfileAnalytics/ProfileAnalytics";
 
-const Profile = () => {
+const Profile = ({ bgcolor }) => {
   return (
     <div className="profile_b_cont">
-      <div className="profile_b">
+      <div className="profile_b" style={{ backgroundColor: bgcolor }}>
         <div className="profile_info_ana">
           {/* profile info */}
           <ProfileInfo />
